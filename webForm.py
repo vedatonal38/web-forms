@@ -9,6 +9,7 @@ from pprint import pprint
 # English : How to Extract and Submit Web Forms from a URL using Python
 # Türkçe : Python kullanarak bir URL'den Web Formlarını Çıkarma ve Gönderme
 # kurulum : pip install requests_html
+#           pip install requests
 #           pip install bs4
 
 class Form:
@@ -122,7 +123,6 @@ class Form:
             pprint(formDetails)
 
 if __name__ == "__main__":
-    print(len(sys.argv))
     if len(sys.argv) < 2:
         print("You did not enter a URL.") # URL girmediniz.
         print("Example: https://example.com") # Örnek: https://example.com
