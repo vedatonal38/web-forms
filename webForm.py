@@ -3,7 +3,7 @@ import webbrowser
 import requests as req
 from bs4 import BeautifulSoup as bs
 from requests_html import HTMLSession
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from pprint import pprint
 
 # English : How to Extract and Submit Web Forms from a URL using Python
@@ -16,7 +16,19 @@ class Form:
     def __init__(self, url):
         self.session = HTMLSession()
         self.url = url
-
+    
+    def is_valid(self, url):
+        """
+        English:
+            Checks whether `url` is a valid URL.
+        Türkçe:
+            "Url" nin geçerli bir URL olup olmadığını kontrol eder.
+        """
+        temp = urlparse(url)
+        # temp.netloc -> example.com
+        # temp.scheme -> https
+        return bool(temp.netloc) and bool(temp.scheme)
+    
     def get_all_forms(self):
         """
         English:
@@ -128,16 +140,14 @@ if __name__ == "__main__":
         print("Example: https://example.com") # Örnek: https://example.com
         sys.exit()
     
-    control = False
-    try:
-        response = req.get(sys.argv[1])
-        control = True
-        url = sys.argv[1]
-    except:
-        print("Please enter a valid URL") # Lütfen geçerli bir adres girin
-    
-    if control:
+    url = sys.argv[1]
+    form = Form(url)
+    if form.is_valid(url):
         form = Form(url)
         form.printALL()
         if len(sys.argv) == 3:
             form.submit(sys.argv[2])
+    else:
+        print("Please enter a valid URL") # Lütfen geçerli bir adres girin
+        print("Example: https://example.com") # Örnek: https://example.com
+        
