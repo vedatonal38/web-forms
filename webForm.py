@@ -17,14 +17,14 @@ class Form:
         self.session = HTMLSession()
         self.url = url
     
-    def is_valid(self, url):
+    def is_valid(self):
         """
         English:
             Checks whether `url` is a valid URL.
         Türkçe:
             "Url" nin geçerli bir URL olup olmadığını kontrol eder.
         """
-        temp = urlparse(url)
+        temp = urlparse(self.url)
         # temp.netloc -> example.com
         # temp.scheme -> https
         return bool(temp.netloc) and bool(temp.scheme)
@@ -142,8 +142,7 @@ if __name__ == "__main__":
     
     url = sys.argv[1]
     form = Form(url)
-    if form.is_valid(url):
-        form = Form(url)
+    if form.is_valid():
         form.printALL()
         if len(sys.argv) == 3:
             form.submit(sys.argv[2])
