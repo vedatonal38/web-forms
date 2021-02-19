@@ -8,4 +8,4 @@
 `$ webForm.py https: // example.com` <br> <br>
 `$ webForm.py https://example.com search` <br>
 
-- Türkçe : [TÜRKÇE](https://github.com/vedatonal38/web-forms/blob/main/README_TR.md "TÜRKÇE")
+- [TÜRKÇE](https://github.com/vedatonal38/web-forms/blob/main/README_TR.md "TÜRKÇE")
